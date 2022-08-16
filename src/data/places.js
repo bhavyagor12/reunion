@@ -11,7 +11,7 @@ const properties =[
         bathrooms: 2,
         area: "5x7m",
         startDate: new Date(2020, 1, 1),
-        propType: "Houses",
+        propType: "AirBNB",
     },
     {
         id:2,
@@ -25,7 +25,7 @@ const properties =[
         bathrooms: 2,
         area: "6x7.5m",
         startDate: new Date(2020, 1, 1),
-        propType: "Houses",
+        propType: "Bungalows",
     },
     {
         id:3,
@@ -39,7 +39,7 @@ const properties =[
         bathrooms: 3,
         area: "8x10m",
         startDate: new Date(2020, 1, 1),
-        propType: "Houses",
+        propType: "Bungalows",
     },
     {
         id:4,

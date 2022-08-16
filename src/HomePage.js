@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import properties from "./data/places";
 import Card from "./components/Card";
 import { HiOutlineSearch } from "react-icons/hi";
@@ -24,8 +24,9 @@ const HomePage = () => {
   const [price, setPrice] = useState("");
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");                                               
-  const [filteredData,setFilteredData] = useState(properties);            
-  console.log(properties.map((property) => (property.propType)));
+  const [filteredData,setFilteredData] = useState(properties);
+  var [startDate, setStartDate] = useState(new Date(2100, 0, 1));  
+
   const handlePriceChange = (value) => {
     toString(value);
     value = value.split("-");
@@ -34,43 +35,35 @@ const HomePage = () => {
   };
   const handleLocationChange = (value) => {
     setLocation(value);
-    console.log(
-      properties.filter((property) => property.address.includes(location))
-    );
   };
   const handleTypeChange = (value) => {
     setType(value);
   };
-  console.log(type)
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
-  const onSearch = (e) => {
-    setSearch(e.target.value);
-    console.log(search);
-  };
   
-  const searchClicked = () =>{
+  console.log(`location${location}hello`);
+
+  const searchClicked = (e) =>{
+    setSearch(e.target.value); 
     setFilteredData(properties.filter(
       (property) =>
       
-    property.address.includes(location) && property.price <= price[1] && property.price >= price[0] && property.propType.includes(type) &&
+    property.address.includes(location) &&  property.price <= price[1] && property.price >= price[0] && property.propType.includes(type)  &&
       (property.address.toLowerCase().includes(search.toLowerCase()) ||
       property.price.toString().includes(search.toLowerCase()) ||
       property.title.toLowerCase().includes(search.toLowerCase()))
-    //   :
-  
+      
+ 
       
   
-    // property.address.toLowerCase().includes(search.toLowerCase()) ||
-    //   property.price.toString().includes(search.toLowerCase()) ||
-    //   property.title.toLowerCase().includes(search.toLowerCase())
+   
     
     
     ));
   }
- 
-
+  console.log(filteredData);
   return (
     <div className={styles.main}>
       <div className={styles.top}>
@@ -80,10 +73,11 @@ const HomePage = () => {
             type="text"
             placeholder="Search with Search Bar"
             className={styles.input}
-            onChange={onSearch}
+            onChange={searchClicked}
+            
           />
           <div className="absolute top-4 right-3">
-            <HiOutlineSearch />
+            <HiOutlineSearch  />
           </div>
         </div>
       </div>
@@ -92,7 +86,7 @@ const HomePage = () => {
           Locations
           <div className={styles.selectTag}>
             <Select
-              defaultValue=""
+              defaultValue="None"
               style={{
                 width: 200,
                 alignItems: "center",
