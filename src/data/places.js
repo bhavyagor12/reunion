@@ -11,6 +11,7 @@ const properties =[
         bathrooms: 2,
         area: "5x7m",
         startDate: new Date(2020, 1, 1),
+        propType: "Houses",
     },
     {
         id:2,
@@ -24,6 +25,7 @@ const properties =[
         bathrooms: 2,
         area: "6x7.5m",
         startDate: new Date(2020, 1, 1),
+        propType: "Houses",
     },
     {
         id:3,
@@ -37,6 +39,7 @@ const properties =[
         bathrooms: 3,
         area: "8x10m",
         startDate: new Date(2020, 1, 1),
+        propType: "Houses",
     },
     {
         id:4,
@@ -50,6 +53,7 @@ const properties =[
         bathrooms: 4,
         area: "10x9m",
         startDate: new Date(2020, 1, 1),
+        propType: "Houses",
     },
     {
         id:5,
@@ -63,6 +67,7 @@ const properties =[
         bathrooms: 1,
         area: "5x5m",
         startDate: new Date(2020, 1, 1),
+        propType: "Houses",
     },
     {
         id:6,
@@ -76,6 +81,7 @@ const properties =[
         bathrooms: 6,
         area: "12x12m",
         startDate: new Date(2020, 1, 1),
+        propType: "Houses",
     },
 ]
 

@@ -22,10 +22,26 @@ const styles = {
 const HomePage = () => {
   const [search, setSearch] = useState("");
   const [price, setPrice] = useState("");
-  const handleChange = (e) => {
-    setPrice(e.target.value);
-    console.log(price);
+  const [location, setLocation] = useState("");
+  const [type, setType] = useState("");                                               
+  const [filteredData,setFilteredData] = useState(properties);            
+  console.log(properties.map((property) => (property.propType)));
+  const handlePriceChange = (value) => {
+    toString(value);
+    value = value.split("-");
+    console.log(value);
+    setPrice(value);
   };
+  const handleLocationChange = (value) => {
+    setLocation(value);
+    console.log(
+      properties.filter((property) => property.address.includes(location))
+    );
+  };
+  const handleTypeChange = (value) => {
+    setType(value);
+  };
+  console.log(type)
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
@@ -33,12 +49,28 @@ const HomePage = () => {
     setSearch(e.target.value);
     console.log(search);
   };
+  
+  const searchClicked = () =>{
+    setFilteredData(properties.filter(
+      (property) =>
+      
+    property.address.includes(location) && property.price <= price[1] && property.price >= price[0] && property.propType.includes(type) &&
+      (property.address.toLowerCase().includes(search.toLowerCase()) ||
+      property.price.toString().includes(search.toLowerCase()) ||
+      property.title.toLowerCase().includes(search.toLowerCase()))
+    //   :
+  
+      
+  
+    // property.address.toLowerCase().includes(search.toLowerCase()) ||
+    //   property.price.toString().includes(search.toLowerCase()) ||
+    //   property.title.toLowerCase().includes(search.toLowerCase())
+    
+    
+    ));
+  }
+ 
 
-  const filteredData = properties.filter(
-    (property) =>
-      property.address.toLowerCase().includes(search.toLowerCase()) ||
-      property.title.toLowerCase().includes(search.toLowerCase())
-  );
   return (
     <div className={styles.main}>
       <div className={styles.top}>
@@ -60,7 +92,7 @@ const HomePage = () => {
           Locations
           <div className={styles.selectTag}>
             <Select
-              defaultValue="Locations"
+              defaultValue=""
               style={{
                 width: 200,
                 alignItems: "center",
@@ -68,11 +100,12 @@ const HomePage = () => {
                 fontWeight: "bold",
                 margin: "10px 0px 0px 10px",
               }}
-              onChange={handleChange}
+              onChange={handleLocationChange}
             >
-              <Option value="New York,USA">New York, USA</Option>
-              <Option value="Mumbai,India">Mumbai, India</Option>
-              <Option value="Delhi,India">Delhi, India</Option>
+              <Option value="">None</Option>
+              <Option value="FL">FL</Option>
+              <Option value="TX">TX</Option>
+              <Option value="IN">IN</Option>
             </Select>
           </div>
         </div>
@@ -95,7 +128,7 @@ const HomePage = () => {
           Price
           <div className={styles.selectTag}>
             <Select
-              defaultValue="Select price"
+              defaultValue="None"
               style={{
                 width: 200,
                 alignItems: "center",
@@ -103,12 +136,13 @@ const HomePage = () => {
                 fontWeight: "bold",
                 margin: "10px 0px 0px 10px",
               }}
-              onChange={handleChange}
+              onChange={handlePriceChange}
             >
-              <Option value="500-2500">$500-$2500</Option>
-              <Option value="$2600-$3500">$2600-$3500</Option>
-              <Option value="$3600-$4500">$3600-$4500</Option>
-              <Option value="$4600-$7800">$4600-$7800</Option>
+              <Option value="0-9000">None</Option>
+              <Option value="2000-2500">2000-2500</Option>
+              <Option value="2600-3000">2600-3000</Option>
+              <Option value="4000-5500">4000-5500</Option>
+              <Option value="7000-9000">7000-9000</Option>
             </Select>
           </div>
         </div>
@@ -116,7 +150,7 @@ const HomePage = () => {
           Property Type
           <div className={styles.selectTag}>
             <Select
-              defaultValue="Houses"
+              defaultValue="none"
               style={{
                 width: 200,
                 alignItems: "center",
@@ -124,8 +158,9 @@ const HomePage = () => {
                 fontWeight: "bold",
                 margin: "10px 0px 0px 10px",
               }}
-              onChange={handleChange}
+              onChange={handleTypeChange}
             >
+               <Option value="">None</Option>
               <Option value="Houses">Houses</Option>
               <Option value="Bungalows">Bungalows</Option>
               <Option value="AirBNB">AirBNB</Option>
@@ -133,27 +168,33 @@ const HomePage = () => {
           </div>
         </div>
         <div>
-          <button className={styles.button}>Search</button>
+          <button className={styles.button} onClick={searchClicked}>Search</button>
         </div>
       </div>
-      <div className={styles.cardStyle}>
-        {filteredData.map((property) => (
-          <div className="m-10">
-            <Card
-              key={property.id}
-              imgUrl={property.imgUrl}
-              price={property.price}
-              title={property.title}
-              address={property.address}
-              beds={property.beds}
-              bathrooms={property.bathrooms}
-              area={property.area}
-              isPopular={property.isPopular}
-              isLiked={property.isLiked}
-            />
-          </div>
-        ))}
-      </div>
+      {filteredData.length > 0 ? (
+        <div className={styles.cardStyle}>
+          {filteredData.map((property) => (
+            <div className="m-10">
+              <Card
+                key={property.id}
+                imgUrl={property.imgUrl}
+                price={property.price}
+                title={property.title}
+                address={property.address}
+                beds={property.beds}
+                bathrooms={property.bathrooms}
+                area={property.area}
+                isPopular={property.isPopular}
+                isLiked={property.isLiked}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          <h1>No Properties Found</h1>
+        </div>
+      )}
     </div>
   );
 };
