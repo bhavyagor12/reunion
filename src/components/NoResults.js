@@ -1,10 +1,10 @@
 import React from 'react'
 const styles = {
-    container: `flex flex-col items-center justify-center mt-20`,
+    container: `flex flex-col items-center justify-center mt-10`,
     image:  `h-[300px] w-full rounded-t-md`,    
     title: `text-2xl font-semibold leading-normal text-black mt-4`,
     text: `text-sm mt-2`,
-    button: `bg-indigo text-white hover:bg-white hover:text-indigo  py-2 px-4 rounded mt-2`,
+    button: `bg-indigo text-white hover:bg-white hover:text-indigo  py-2 px-4 rounded mt-2 cursor-pointer`,
 }
 const NoResults = () => {
   return (
