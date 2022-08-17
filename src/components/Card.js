@@ -7,7 +7,7 @@ import { WiStars } from "react-icons/wi";
 import { useRecoilState } from "recoil";
 
 const styles = {
-  card: `flex flex-col  w-[300px] bg-white mt-4 ml-4 rounded-2xl border-1 border-gray-300 shadow-xl relative`,
+  card: `flex flex-col  w-[300px] bg-white mt-4 ml-4 rounded-2xl border-1 border-gray-300 shadow-xl relative cursor-pointer`,
   details: `flex justify-between items-center mt-2 ml-4 `,
   price: `text-indigo text-xl `,
   popularTag: `text-sm font-semibold flex items-center  absolute  rounded-l-md rounded-r-2xl p-0.5  mr-1 bg-indigo text-white rounded-r-lg w-[110px] bg-clip-border opacity-75`,
@@ -34,7 +34,7 @@ const Card = ({
   return (
     <div className={styles.card}>
       <div className={styles.image}>
-        <img src={imgUrl} alt="" className="h-[160px] w-full rounded-t-md" />
+        <img src={imgUrl} alt="" className="h-[180px] w-full rounded-t-md" />
         {isPopular ? (
           <div className={styles.popularTag} id="tag">
             <WiStars size={30} />

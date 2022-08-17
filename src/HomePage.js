@@ -15,7 +15,7 @@ const styles = {
   title: "text-4xl font-semibold leading-normal text-black",
   input: `h-12 w-60 pr-8 pl-5 text-sm rounded z-0 focus:shadow focus:outline-none border-2 border-[#FAF9F6]`,
   filters: `flex justify-between items-center w-3/4 mt-10 bg-white p-4 rounded-2xl`,
-  button: `bg-indigo text-white hover:bg-white hover:text-indigo  py-2 px-4 rounded ml-2 `,
+  button: `bg-indigo text-white hover:bg-white hover:text-indigo  py-2 px-4 rounded ml-4 `,
   filterTitles: `flex flex-col justify-center items-center text-md text-[#808080] ml-2 w-full border-r-2 border-[#E5E4E2]`,
   selectTag: `flex justify-center items-center`,
 };
@@ -41,16 +41,22 @@ const HomePage = () => {
     setType(value);
   };
   const onChange = (date, dateString) => {
-    console.log(date, dateString);
+    console.log(date);
+    console.log(new Date(dateString));
+    date == null
+      ? setStartDate(new Date(2100, 0, 1))
+      : setStartDate(new Date(dateString));
   };
   
-  console.log(`location${location}hello`);
+  const isDateValid =(date) =>{
+    return date.getTime() <= startDate.getTime();
+  }
 
   const searchClicked = (e) =>{
     setSearch(e.target.value); 
     setFilteredData(properties.filter(
       (property) =>
-      
+      isDateValid(property.startDate) &&
     property.address.includes(location) &&  property.price <= price[1] && property.price >= price[0] && property.propType.includes(type)  &&
       (property.address.toLowerCase().includes(search.toLowerCase()) ||
       property.price.toString().includes(search.toLowerCase()) ||
@@ -92,7 +98,8 @@ const HomePage = () => {
                 width: 200,
                 alignItems: "center",
                 textAlign: "center",
-                fontWeight: "bold",
+                fontWeight: 900,
+                fontSize: "16px",
                 margin: "10px 0px 0px 10px",
               }}
               onChange={handleLocationChange}
@@ -114,6 +121,7 @@ const HomePage = () => {
                 width: 200,
                 alignItems: "center",
                 textAlign: "center",
+                fontSize: "16px",
                 margin: "10px 0px 0px 10px",
               }}
             />
@@ -129,6 +137,8 @@ const HomePage = () => {
                 alignItems: "center",
                 textAlign: "center",
                 fontWeight: "bold",
+                fontSize: "16px",
+                 
                 margin: "10px 0px 0px 10px",
               }}
               onChange={handlePriceChange}
@@ -145,12 +155,13 @@ const HomePage = () => {
           Property Type
           <div className={styles.selectTag}>
             <Select
-              defaultValue="none"
+              defaultValue="None"
               style={{
                 width: 200,
                 alignItems: "center",
                 textAlign: "center",
                 fontWeight: "bold",
+                fontSize: "16px",   
                 margin: "10px 0px 0px 10px",
               }}
               onChange={handleTypeChange}

@@ -10,7 +10,7 @@ const styles = {
     title:`flex items-center justify-between gap-2` ,
     logo : `text-indigo`,
     navLinks :`flex w-2/4 items-center justify-start gap-6 mr-4`,
-    navLink :` flex items-center px-4 py-1.5 bg-transparent text-black font-medium  leading-tight uppercase rounded hover:bg-indigo hover:text-white focus:text-blue focus:bg-gray focus:outline-none focus:ring-0 active:bg-gray active:text-blue transition duration-300 ease-in-out gap-2` ,
+    navLink :` flex items-center px-4 py-1.5 bg-transparent text-black font-medium  leading-tight uppercase rounded hover:bg-indigo hover:text-white focus:text-blue focus:bg-gray focus:outline-none focus:ring-0 active:bg-gray active:text-blue transition duration-300 ease-in-out gap-2 cursor-pointer` ,
 }
 const Navbar = () => {
   return (

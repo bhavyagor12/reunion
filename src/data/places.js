@@ -10,7 +10,7 @@ const properties =[
         beds: 3,
         bathrooms: 2,
         area: "5x7m",
-        startDate: new Date(2020, 1, 1),
+        startDate: new Date(2022, 2, 1),
         propType: "AirBNB",
     },
     {
@@ -24,7 +24,7 @@ const properties =[
         beds: 4,
         bathrooms: 2,
         area: "6x7.5m",
-        startDate: new Date(2020, 1, 1),
+        startDate: new Date(2022, 4, 1),
         propType: "Bungalows",
     },
     {
@@ -38,7 +38,7 @@ const properties =[
         beds: 4,
         bathrooms: 3,
         area: "8x10m",
-        startDate: new Date(2020, 1, 1),
+        startDate: new Date(2022, 3, 1),
         propType: "Bungalows",
     },
     {
@@ -52,7 +52,7 @@ const properties =[
         beds: 5,
         bathrooms: 4,
         area: "10x9m",
-        startDate: new Date(2020, 1, 1),
+        startDate: new Date(2022, 7, 1),
         propType: "Houses",
     },
     {
@@ -66,7 +66,7 @@ const properties =[
         beds: 2,
         bathrooms: 1,
         area: "5x5m",
-        startDate: new Date(2020, 1, 1),
+        startDate: new Date(2022, 4, 1),
         propType: "Houses",
     },
     {
@@ -80,7 +80,7 @@ const properties =[
         beds: 8,
         bathrooms: 6,
         area: "12x12m",
-        startDate: new Date(2020, 1, 1),
+        startDate: new Date(2022, 9, 1),
         propType: "Houses",
     },
 ]
