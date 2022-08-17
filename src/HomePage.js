@@ -5,6 +5,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 import { Select } from "antd";
 import "antd/dist/antd.css";
 import { DatePicker } from "antd";
+import NoResults from "./components/NoResults";
 const { Option } = Select;
 
 const styles = {
@@ -21,7 +22,7 @@ const styles = {
 
 const HomePage = () => {
   const [search, setSearch] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState([0,9000]);
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");                                               
   const [filteredData,setFilteredData] = useState(properties);
@@ -186,7 +187,7 @@ const HomePage = () => {
         </div>
       ) : (
         <div>
-          <h1>No Properties Found</h1>
+          <NoResults/>
         </div>
       )}
     </div>
